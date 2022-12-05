@@ -17,6 +17,13 @@ public class Wordle {
     /** This will assist in identifying if the letter is correct, but in the wrong place. */
     private static final String YELLOW = "\u001B[33m";
 
+    /** A default constructor that initializes the name and level. */
+    public Wordle() {
+        name = "UNKNOWN";
+        level = "EASY";
+        answer = wordRandomizer();
+    }
+
     /** A two-parameter constructor that initializes the name and level.
      * @param name - User's preferred name
      * @param level - User's preferred level
@@ -30,34 +37,37 @@ public class Wordle {
         } else {
             this.level = "HARD";
         }
+        answer = wordRandomizer();
     }
 
-    /** Zero-parameter method that selects the answer by chance (three options per level). */
-    public void wordRandomizer() {
+    /** Zero-parameter method that selects the answer by chance (three options per level) and returns it.
+     * @return String - The answer the user will be attempting to get
+     */
+    public String wordRandomizer() {
         int num = (int) (Math.random() * 3) + 1;
         if (level.equals("EASY")) { // 4-letter words
             if (num == 1) {
-                answer = "bunt";
+                return "bunt";
             } else if (num == 2) {
-                answer = "trap";
+                return "trap";
             } else {
-                answer = "acid";
+                return "acid";
             }
         } else if (level.equals("MEDIUM")) { // 5-letter words
             if (num == 1) {
-                answer = "viper";
+                return "viper";
             } else if (num == 2) {
-                answer = "study";
+                return "study";
             } else {
-                answer = "nacho";
+                return "nacho";
             }
         } else { // 6-letter words
             if (num == 1) {
-                answer = "throne";
+                return "throne";
             } else if (num == 2) {
-                answer = "answer";
+                return "answer";
             } else {
-                answer = "volume";
+                return "volume";
             }
         }
     }
@@ -101,13 +111,11 @@ public class Wordle {
     }
 
     /** Zero-parameter method that prints out the header and game information for the end of the game. */
-    public void end() {
-        String end = "- - - - - - - - - - - -";
-        end += "\nGreat job, " + name + "!";
-        end += "\nGuesses Taken: " + guesses;
-        end += "\nCorrect Answer: " + answer;
-        System.out.println(end);
+    public String toString() {
+        String returnString = "- - - - - - - - - - - -";
+        returnString += "\nGreat job, " + name + "!";
+        returnString += "\nGuesses Taken: " + guesses;
+        returnString += "\nCorrect Answer: " + answer;
+        return returnString;
     }
-
-    // NEED toString()
 }
