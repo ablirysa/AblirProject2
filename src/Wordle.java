@@ -20,7 +20,7 @@ public class Wordle {
     /** A default constructor that initializes the name and level. */
     public Wordle() {
         name = "UNKNOWN";
-        level = "EASY";
+        level = "MEDIUM";
         answer = wordRandomizer();
     }
 
@@ -82,12 +82,7 @@ public class Wordle {
      * @return boolean - Only true if the user's guess is the answer.
      */
     public boolean check(String guess) {
-        guess = guess.toLowerCase();
-        if (guess.equals(answer)) {
-            return true;
-        } else {
-            return false;
-        }
+        return guess.toLowerCase().equals(answer);
     }
 
     /** Zero-parameter method that increases the amount of guesses taken, for the purpose of stats. */

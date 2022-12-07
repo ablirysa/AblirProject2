@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Main {
+public class WordleRunner {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
